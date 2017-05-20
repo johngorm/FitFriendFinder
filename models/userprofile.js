@@ -6,8 +6,16 @@ module.exports = function(sequelize, DataTypes) {
       	defaultValue: DataTypes.UUIDV4
       },
 	age: DataTypes.INTEGER,
-    text: DataTypes.STRING,
-    complete: DataTypes.BOOLEAN
+	height: DataTypes.INTEGER,
+	weight: DataTypes.INTEGER,
+	// BMI: DataTypes.INTEGER,
+	location: DataTypes.STRING,
+	activity: DataTypes.STRING,
+	frequency: DataTypes.INTEGER,
+	intensity: DataTypes.INTEGER,
+	perception: DataTypes.STRING,
+	goal: DataTypes.STRING,
+    membership: DataTypes.STRING
   });
   return userProfile;
 };
