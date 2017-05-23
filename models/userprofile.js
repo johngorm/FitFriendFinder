@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var userProfile = sequelize.define("userProfile", {
-  	id: {
-		type: DataTypes.UUID,
-      	primaryKey: true,
-      	defaultValue: DataTypes.UUIDV4
-      },
+  // 	id: {
+		// type: DataTypes.UUID,
+  //     	primaryKey: true,
+  //     	defaultValue: DataTypes.UUIDV4
+  //     },
 	age: DataTypes.INTEGER,
 	height: DataTypes.INTEGER,
 	weight: DataTypes.INTEGER,
