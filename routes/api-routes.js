@@ -1,33 +1,105 @@
 
 const db = require('../models');
+const _ = require('lodash');
 
 /* Routes */
 
 module.exports = function(app) {
 
+	function getLoggedInUser(ID){
+		return db.userProfile.findOne({
+			where:{
+				id: ID
+			}
+		});
+	}
+
+	function getOtherUsers(ID){
+		return db.userProfile.findAll({
+			where:{
+				id: {
+					$ne: ID
+				}
+			}
+		});
+	}
+
+	function deleteUserProfile(ID){
+		return db.userProfile.destroy({
+			where:{
+				id: ID
+			}
+		});
+	}
+
+	function deleteUserLogIn(ID){
+		return db.userLogin.destroy({
+			where:{
+				id: ID
+			}
+		});
+	}
+
 
 	//GET route for getting all the users	
 	app.get('/api/user', function(req, res){
-		db.userprofile.findAll({}).then(function(appUsers){
+		db.userProfile.findAll({}).then(function(appUsers){
 			res.json(appUsers);
-		});
+		}).catch( (error) =>{
+			console.error(error);
+		});;
 	});
 
 	//GET route for a user's profile page
 	app.get('/profile/:id', function(req,res){
-		db.userprofile.findOne({
-			where:{
-				id : req.params.id
+		let ID = req.params.id;
+		let promisesArray = [getLoggedInUser(ID), getOtherUsers(ID)];
+		Promise.all(promisesArray).then( (users) => {
+			
+			var User = users[0]; //JSON object of current users info
+			var matches = users[1];
+			let userScore = User.profileScore;
+		
+			
+			let inRangeMatches = []; 
+			console.log('bar',matches.length);
+			for(var ii = 0 ; ii < matches.length ; ii++){
+
+				let potentialMatch = matches[ii].dataValues;
+				matches[ii].compatibility = Math.abs(userScore - matches[ii]['profileScore']);
+
+				if( matches[ii].compatibility < 10){
+					potentialMatch.compatLevel = 'match-best';
+				}
+				else if (matches[ii].compatibility  < 15){
+					potentialMatch.compatLevel = 'match-highly-likely';
+				}
+				else if (matches[ii].compatibility < 20){
+					potentialMatch.compatLevel = 'match-more-likely';
+				}
+				else if (matches[ii].compatibility < 25){
+					potentialMatch.compatLevel = 'match-likely';
+				}
+				else {
+					potentialMatch.compatLevel = 'match-possible';
+				}	
+				
 			}
-		}).then(function(profile){
-			res.render('userInfo', profile);
-		})
+			
+			let matchpageInfo =  {User, matches};
+			res.json(matchpageInfo);
+
+		}).catch((error) => {
+			db.userProfile.findAll({}).then((results) => {
+				res.json(results);
+			})
+		});
 	});
 
 		//PUT route for updating a user's information
 	app.put('/profile/:id', function(req,res){
 		let updateinfo = req.body;
-		db.userprofile.update({
+		db.userProfile.update({
 			age: updateinfo.age,
 			height: updateinfo.height,
 			weight: updateinfo.weight,
@@ -41,14 +113,16 @@ module.exports = function(app) {
 
 		}).then(function(profiles){
 			res.json(profiles);
-		})
+		}).catch( (error) =>{
+			console.error(error);
+		});
 	})
 
 
 	//POST route for adding a new user to the database
 	app.post('/signup', function(req,res){
 		let new_user_info = req.body;
-		db.userprofile.create({
+		db.userProfile.create({
 			age: new_user_info.age,
 			height: new_user_info.height,
 			weight: new_user_info.weight,
@@ -63,19 +137,20 @@ module.exports = function(app) {
 		}).then(function(newUser){
 			res.json(newUser);
 			
+		}).catch( (error) =>{
+			console.error(error);
 		});
 	});
 
 
 	//Delete route for a users profile
 	app.delete('/profile/:id', function(req,res){
-		db.userprofile.destroy({
-			where: {
-				id: req.params.id
-			}
-		}).then(function(userprofiles) {
-			//Need to delete user from login database
-			res.redirect('/');
-		})
-	})
+		let ID = req.params.id;
+		let promisesArray = [destroyUserProfile(ID), destroyUserProfile(ID)];
+		Promise.all(promisesArray).then(function(userProfiles) {
+			res.redirect('/')//Set timer to display goodbye modal to user
+		}).catch( (error) =>{
+			console.error(error);
+		});
+	});
 }
