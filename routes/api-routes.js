@@ -41,12 +41,26 @@ module.exports = function(app) {
 
 
 	//GET route for getting all the users	
-	app.get('/api/user', function(req, res){
-		db.userProfile.findAll({}).then(function(appUsers){
-			res.json(appUsers);
-		}).catch( (error) =>{
-			console.error(error);
-		});;
+	app.get('/api/user/:id?', function(req, res){
+		if(!req.params.id){
+			db.userProfile.findAll({}).then(function(appUsers){
+				res.json(appUsers);
+			}).catch( (error) =>{
+				console.error(error);
+			});
+		}
+		else{
+			db.userProfile.findOne({
+				where: {
+					id: req.params.id
+				}
+			}).then(function(user){
+				res.json(user);
+			}).catch((error) => {
+				console.error(error);
+
+			})
+		}
 	});
 
 	//GET route for a user's profile page
@@ -85,8 +99,8 @@ module.exports = function(app) {
 				
 			}
 			
-			let matchpageInfo =  {User, matches};
-			res.json(matchpageInfo);
+			let matchpageInfo =  {User: User, match: matches};
+			res.render('profile', matchpageInfo);
 
 		}).catch((error) => {
 			db.userProfile.findAll({}).then((results) => {
@@ -134,7 +148,8 @@ module.exports = function(app) {
 			membership: new_user_info.membership
 
 		}).then(function(newUser){
-			res.json(newUser);
+			var id = newUser.id;
+			res.redirect('/profile/'+ id);
 			
 		}).catch( (error) =>{
 			console.error(error);

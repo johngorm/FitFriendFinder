@@ -6,7 +6,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-
+const expressHandlebars = require('express-handlebars');
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -21,12 +21,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+//Set templating engine
+app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 // Static directory
 app.use(express.static("./public"));
 
 // Routes =============================================================
 
-// require("./routes/html-routes.js")(app);
+require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our express app
