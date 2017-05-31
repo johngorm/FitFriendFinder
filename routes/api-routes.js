@@ -78,8 +78,8 @@ module.exports = function(app) {
 			console.log('bar',matches.length);
 			for(var ii = 0 ; ii < matches.length ; ii++){
 
-				let potentialMatch = matches[ii].dataValues;
-				matches[ii].compatibility = Math.abs(userScore - matches[ii]['profileScore']);
+				let potentialMatch = matches[ii];
+				potentialMatch.compatibility = Math.abs(userScore - potentialMatch['profileScore']);
 
 				if( matches[ii].compatibility < 10){
 					potentialMatch.compatLevel = 'match-best';
@@ -95,11 +95,13 @@ module.exports = function(app) {
 				}
 				else {
 					potentialMatch.compatLevel = 'match-possible';
-				}	
+				}
+				potentialMatch.googleMapsAddress = potentialMatch.location.split(' ').join('+'); 	
 				
 			}
 			
 			let matchpageInfo =  {User: User, match: matches};
+			console.log(matches);
 			res.render('profile', matchpageInfo);
 
 		}).catch((error) => {
