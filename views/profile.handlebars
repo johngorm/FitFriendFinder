@@ -1,0 +1,128 @@
+{{> navbar }}
+
+<section class="global-page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h2>Welcome back to FitTogether!</h2>
+                        <ol class="breadcrumb">
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section id="blog-full-width">
+        <div class = "text-center">
+        <h3> Tiffany, here are your best matches: </h3></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class = "match_list">
+                        {{#each profile}}
+                            <li>
+                                {{> matchProfile }}
+                            </li>
+                        {{/each}}
+                    </ul>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="sidebar">
+                        <div class="author widget">
+                            <img class="img-responsive" src="images/author/author-bg.jpg">
+                            <div class="author-body text-center">
+                                <div class="author-img">
+                                    <img src="images/avatar1.jpg">
+                                </div>
+                                <div class="author-bio">
+                                    <h3>Tiffany Elmore</h3>
+                                    <p>"Sweat is fat crying!"</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="categories widget text-center">
+                            <h3 class="widget-head">My ideal workout partner:</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleSelect1">Activity Level: </label>
+                                    <select class="form-control" id="exampleSelect1">
+                                        <option>1. Not Intense</option>
+                                        <option>2. Lightly Intense</option>
+                                        <option>3. Moderately Intense</option>
+                                        <option>4. Highly Intense </option>
+                                        <option>5. Super Intense</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleSelect1">Works out: </label>
+                                    <select class="form-control" id="exampleSelect1">
+                                        <option>One time a week</option>
+                                        <option>Two times a week</option>
+                                        <option>Three times a week</option>
+                                        <option>Four times a week</option>
+                                        <option>Five times a week</option>
+                                        <option>Six times a week</option>
+                                        <option>Seven times a week</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleSelect1">Fitness goal: </label>
+                                    <select class="form-control" id="exampleSelect1">
+                                        <option>Socialize and make new friends</option>
+                                        <option>Get acquainted with the gym</option>
+                                        <option>Periodically visit the gym</option>
+                                        <option>Maintain regular physical activity levels</option>
+                                        <option>Maintain regular physical activity levels</option>
+                                        <option>Maintain active lifestyle and increase activity variety</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleSelect1">Is:</label>
+                                    <select class="form-control" id="exampleSelect1">
+                                        <option>A couch potato</option>
+                                        <option>Making an effort to be active</option>
+                                        <option>Healthy, but desires improvements</option>
+                                        <option>A fitness model</option>
+                                        <option>Ripped</option>
+                                    </select>
+                                </div>
+                                <div class="form-check">
+                                <label for="exampleSelect1">Interested in:</label><br>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> Running
+                                    </label><br>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> Weightlifting
+                                    </label><br>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> Yoga
+                                    </label><br>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> Group Excercise Classes
+                                    </label><br>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> Swimming
+                                    </label><br>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> Outdoor workout sessions
+                                    </label><br>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> Indoor workout sessions
+                                    </label><br>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> Biking
+                                    </label><br>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input"> HIIT
+                                    </label><br>
+
+
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+{{> footer }}

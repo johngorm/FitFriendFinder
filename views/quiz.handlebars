@@ -1,0 +1,274 @@
+{{> reduceNavbar }}
+
+<div class="container text-center">
+    <br><br><br><br><br><br>
+       <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                <h1>My Fitness Quiz</h1>
+            </div>
+        </div>
+
+    <div class="row">
+            <div class="jumbotron">
+                <div class="input-group" style="width: 100%">
+                
+                    <h3>Please enter the following: </h3>
+                    <input type="text" class="form-control" placeholder="username" id="username" required>
+                    <input type="text" class="form-control" placeholder="age" id="age" required>
+                    <input type="text" class="form-control" placeholder="height (inches)" id="height" required>
+                    <input type="text" class="form-control" placeholder="weight (pounds)" id="weight" required="">
+                </div>
+            </div>
+        </div>
+
+    <form>
+        <div class="row">
+            <div class="jumbotron jumbotron-question">
+                
+                <div class="chosen-select" id="intensity"><h3>Question 1. My activity level is...</h3></div>
+                
+                <div class="btn-group btn-block" data-toggle="buttons">
+                    <div>
+                        <label class="btn btn-default btn-lg btn-block grow">
+                            <input type="radio" name="options" id="option1" value="1" autocomplete="off" checked> not intense -- I came to float on a cloud.
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" id="option2" value="2" autocomplete="off" checked> lightly intense
+                        </label>
+                    </div>
+                    
+                    <div>
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" id="option2" value="3" autocomplete="off" checked> moderately intense
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" id="option4" value="4" autocomplete="off" checked> highly intense
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" id="option5" value="5" autocomplete="off" checked> super intense -- I came to win!
+                        </label>
+                    </div>
+                </div><!--close button group-->
+            </div><!--end question jumbotron-->
+        </div>
+    
+        <br>
+
+        <div class="row">
+            <div class="jumbotron jumbotron-question">
+                
+                <div class="chosen-select" id="frequency"><h3>Question 2. I workout ___ day(s) per week</h3></div>
+                
+                <div class="btn-group btn-block" data-toggle="buttons">
+                    <div>
+                        <label class="btn btn-default btn-lg btn-block grow">
+                            <input type="radio" name="options" value="1" autocomplete="off" checked> 1
+                        </label>
+                    
+
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="2" autocomplete="off" checked> 2
+                        </label>
+                    
+                    
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="3" autocomplete="off"> 3
+                        </label>
+                    
+
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="4" autocomplete="off"> 4
+                        </label>
+                    
+
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="5" autocomplete="off"> 5
+                        </label>
+                    </div>
+                </div><!--close button group-->
+            </div><!--end question jumbotron-->
+        </div>
+        
+        <br> 
+
+        <div class="row">
+            <div class="jumbotron jumbotron-question">
+                
+                <div class="chosen-select" id="goal"><h3>Question 3. My fitness goal is to...</h3></div>
+                
+                <div class="btn-group btn-block" data-toggle="buttons">
+                    <div>
+                        <label class="btn btn-default btn-lg btn-block grow">
+                            <input type="radio" name="options" value="1" autocomplete="off" checked> socialize and make new friends
+                        </label>
+                    
+
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="2" autocomplete="off" checked> get aquainted with the gym or consider participating in physical activities
+                        </label>
+                    
+                    
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="3" autocomplete="off"> periodically visit the gym or participate in physical activities
+                        </label>
+                    
+
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="4" autocomplete="off"> maintain regular physical activity levels
+                        </label>
+                    
+
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="5" autocomplete="off"> maintain active lifestyle and increase activity variety
+                        </label>
+                    </div>
+                </div><!--close button group-->
+            </div><!--end question jumbotron-->
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="jumbotron jumbotron-question">
+                
+                <div class="chosen-select" id="goal"><h3>Question 4. I currently see myself as...</h3></div>
+                
+                <div class="btn-group btn-block" data-toggle="buttons">
+                    <div>
+                        <label class="btn btn-default btn-lg btn-block grow">
+                            <input type="radio" name="options" value="1" autocomplete="off" checked> a couch potato
+                        </label>
+                    
+
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="2" autocomplete="off" checked> not as fit as I could be, but still making an effort to be active
+                        </label>
+                    
+                    
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="3" autocomplete="off"> healthy, but in desire of improvements
+                        </label>
+                    
+
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="4" autocomplete="off"> a fitness model...people can tell that I workout
+                        </label>
+                    
+
+                    
+                        <label class="btn btn-default btn-lg btn-block grow"> 
+                            <input type="radio" name="options" value="5" autocomplete="off"> Ripped -- my muscles have muscles!
+                        </label>
+                    </div>
+                </div><!--close button group-->
+            </div><!--end question jumbotron-->
+        </div>
+
+        <br>
+  
+        <div class="row">
+
+            <div class="btn-group" data-toggle="buttons">
+                <div class="jumbotron jumbotron-question" id="activity">
+
+                <div class="btn-group" data-toggle="buttons"><h3>Question 5. I normally participate in ...</h3></div>
+
+            <div>
+
+
+                <label class="btn btn-primary active">
+                    <input type="checkbox" id="checkbox1" autocomplete="off" checked> Running
+                </label>
+
+                <label class="btn btn-primary">
+                    <input type="checkbox" id="checkbox2" autocomplete="off"> Weight lifting
+                </label>
+                <label class="btn btn-primary">
+                     <input type="checkbox" id="checkbox3" autocomplete="off"> Yoga
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" id="checkbox4" autocomplete="off"> Group Exercise Classes
+                </label>
+                <label class="btn btn-primary">
+                     <input type="checkbox" id="checkbox5" autocomplete="off"> Swimming
+                </label>
+                <label class="btn btn-primary">
+                    <input type="checkbox" id="checkbox6" autocomplete="off"> Outdoor Workout Sessions
+                </label>
+            </div>
+            
+            <br>
+
+            <div>
+                <label class="btn btn-primary">
+                     <input type="checkbox" id="checkbox7" autocomplete="off"> Indoor Workout Sessions
+                </label>
+                <label class="btn btn-primary">
+                     <input type="checkbox" id="checkbox8" autocomplete="off"> Biking
+                </label>
+                <label class="btn btn-primary">
+                     <input type="checkbox" id="checkbox9" autocomplete="off"> HIIT
+                </label>
+                <label class="btn btn-primary">
+                     <input type="checkbox" id="checkbox10" autocomplete="off"> Tennis
+                </label>
+                <label class="btn btn-primary">
+                     <input type="checkbox" id="checkbox11" autocomplete="off"> I don't participate in any of these activites.
+                </label>
+            </div>  
+
+            </div>
+
+            </div>  
+
+        </div>
+        
+    </form>
+        
+        <br>
+        <br>
+
+            <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+        Submit</button>
+
+        <br>
+        <br>
+
+
+    </div>
+
+
+<script>
+$( "li" )
+    .hover(function() {
+      $( this )
+        .toggleClass( "active" )
+        .next()
+          .stop( true, true )
+          
+    });
+</script>
+
+{{> footer }}
