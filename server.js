@@ -6,10 +6,11 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+
 var passport   = require('passport');
 var session    = require('express-session');
 var env = require('dotenv').load();
-var exphbs = require('express-handlebars')
+const expressHandlebars = require('express-handlebars');
 
 // Sets up the Express App
 // =============================================================
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+
 // For Passport
  
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
@@ -34,13 +36,18 @@ app.use(passport.session()); // persistent login sessions
  
 
 
+//Set templating engine
+app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+
 // Static directory
 app.use(express.static("./public"));
 
 // Routes =============================================================
 
-// require("./routes/html-routes.js")(app);
-// require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 
 //load passport strategies

@@ -18,11 +18,18 @@
   },
   "homepage": "https://github.com/johngorm/FitFriendFinder#readme",
   "dependencies": {
+
     "bcrypt-nodejs": "0.0.3",
     "dotenv": "^4.0.0",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.3",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "lodash": "^4.17.4",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4"
+
   }
 }
