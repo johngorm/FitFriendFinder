@@ -4,7 +4,7 @@ FitTogether allows users to easily find and connect with fellow workout partners
 
 ## Usage 
 
-Welcoming Page:
+Welcome Page:
 
 ![Login Page/Create New Profile](https://cloud.githubusercontent.com/assets/21062007/26749012/62f48ed4-47c9-11e7-96ef-1ad06a11449d.png)
 
