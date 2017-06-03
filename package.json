@@ -1,16 +1,15 @@
 {
-  "name": "FitFriendFinder",
+  "name": "project-files",
   "version": "1.0.0",
-  "description": "Find the right workout buddy for you",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johngorm/FitFriendFinder.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -18,18 +17,11 @@
   },
   "homepage": "https://github.com/johngorm/FitFriendFinder#readme",
   "dependencies": {
-
-    "bcrypt-nodejs": "0.0.3",
-    "dotenv": "^4.0.0",
-    "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.3",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "lodash": "^4.17.4",
-    "mysql": "^2.13.0",
-    "sequelize": "^3.30.4"
-
-  }
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.9"
+  },
+  "devDependencies": {},
+  "description": ""
 }

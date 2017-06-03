@@ -1,72 +1,28 @@
-// *****************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-//
-// ******************************************************************************
-// *** Dependencies
-// =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
-var passport   = require('passport');
-var session    = require('express-session');
-var env = require('dotenv').load();
-const expressHandlebars = require('express-handlebars');
+var port = process.env.PORT || 3000;
 
-// Sets up the Express App
-// =============================================================
 var app = express();
-var PORT = process.env.PORT || 8080;
 
-// Requiring our models for syncing
-var db = require("./models");
-// var models = require("./app/models");
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static(process.cwd() + "/"));
 
-// Sets up the Express app to handle data parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
+// Override with POST having ?_method=DELETE
+app.use(methodOverride("_method"));
 
-// For Passport
- 
-app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
- 
+// Set Handlebars.
+var exphbs = require("express-handlebars");
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-//Set templating engine
-app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
+// Import routes and give the server access to them.
+var routes = require("./controllers/appController.js");
 
+app.use("/", routes);
 
-// Static directory
-app.use(express.static("./public"));
-
-// Routes =============================================================
-
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
-
-
-//load passport strategies
-require('./config/passport.js')(passport, db.user);
- 
-//Sync Database
-// models.sequelize.sync().then(function() {
-db.sequelize.sync().then(function() {
-    console.log('Nice! Database looks fine')
- 
-	}).catch(function(err) {
-    	console.log(err, "Something went wrong with the Database Update!")
-	}); 
-
-app.listen(PORT, function(err) {
- 
-    if (!err)
-        console.log("App listening on PORT " + PORT);
-    else console.log(err)
- 
-});
-
+app.listen(port);
